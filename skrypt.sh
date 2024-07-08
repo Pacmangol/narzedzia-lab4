@@ -1,5 +1,12 @@
 #!/bin/bash
 
+show_help() {
+    echo "Usage: skrypt.sh [OPTION]"
+    echo "--date        Display the current date"
+    echo "--logs [NUM]  Create NUM log files (default: 100)"
+    echo "--help        Display this help message"
+}
+
 if [[ "$1" == "--date" ]]; then
     date
 elif [[ "$1" == "--logs" ]]; then
@@ -14,7 +21,8 @@ elif [[ "$1" == "--logs" ]]; then
         echo "Created by: $0" >> $filename
         echo "Date: $(date)" >> $filename
     done
+elif [[ "$1" == "--help" ]]; then
+    show_help
 else
-    echo "Usage: skrypt.sh --date | --logs [num_files]"
+    echo "Invalid option. Use --help for usage information."
 fi
-
