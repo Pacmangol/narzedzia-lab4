@@ -17,3 +17,4 @@ elif [[ "$1" == "--logs" ]]; then
 else
     echo "Usage: skrypt.sh --date | --logs [num_files]"
 fi
+
