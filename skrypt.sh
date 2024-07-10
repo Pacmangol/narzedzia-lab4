@@ -7,6 +7,8 @@ show_help() {
     echo "--help, -h        Wyświetla pomoc"
     echo "--init            Klonuje repozytorium i ustawia PATH"
     echo "--error, -e [N]   Tworzy N plików errorx/errorx.txt, domyślnie 100"
+    echo "--gitignore       Tworzy plik .gitignore ignorujący pliki log*"
+    echo "--tag             Tworzy tag v1.0"
 }
 
 create_logs() {
@@ -28,6 +30,15 @@ create_errors() {
     done
 }
 
+create_gitignore() {
+    echo "log*" > .gitignore
+}
+
+create_tag() {
+    git tag v1.0
+    git push origin v1.0
+}
+
 case "$1" in
     --date|-d)
         date
@@ -44,6 +55,12 @@ case "$1" in
         ;;
     --error|-e)
         create_errors $2
+        ;;
+    --gitignore)
+        create_gitignore
+        ;;
+    --tag)
+        create_tag
         ;;
     *)
         echo "Nieznana opcja: $1"
